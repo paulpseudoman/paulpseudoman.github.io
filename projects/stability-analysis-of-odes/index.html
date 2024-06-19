@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+  <title>
+  Stability Analysis of ODEs · Aritrabha Majumdar
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Aritrabha Majumdar">
+<meta name="description" content="1. Linear Systems Link to heading 1.1Autonomous System
+An autonomous System of Ordinary Differential Equations is a system which does NOT explicitly depend on the independent variables. It is of the form $$ \frac{d}{dt} x(t) = f(x(t))\hspace{0.15cm}; \hspace{0.5cm} x \in \mathbb{R}^n $$
+Solutions are invariant under horizontal translations.
+Proof: Say, $x_1(t)$ is a solution of the ODE $\frac{dx}{dt} = f(x)$, $x(0) = x_0$.\ Then $x_2(t) = x_1(t-t_0)$ solves $\frac{dx}{dt} = f(x)$, $x(t_0) = x_0$.">
+<meta name="keywords" content="blog,developer,personal">
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Stability Analysis of ODEs">
+  <meta name="twitter:description" content="1. Linear Systems Link to heading 1.1Autonomous System
+An autonomous System of Ordinary Differential Equations is a system which does NOT explicitly depend on the independent variables. It is of the form $$ \frac{d}{dt} x(t) = f(x(t))\hspace{0.15cm}; \hspace{0.5cm} x \in \mathbb{R}^n $$
+Solutions are invariant under horizontal translations.
+Proof: Say, $x_1(t)$ is a solution of the ODE $\frac{dx}{dt} = f(x)$, $x(0) = x_0$.\ Then $x_2(t) = x_1(t-t_0)$ solves $\frac{dx}{dt} = f(x)$, $x(t_0) = x_0$.">
+
+<meta property="og:url" content="http://localhost:4321/projects/stability-analysis-of-odes/">
+  <meta property="og:site_name" content="Aritrabha Majumdar">
+  <meta property="og:title" content="Stability Analysis of ODEs">
+  <meta property="og:description" content="1. Linear Systems Link to heading 1.1Autonomous System
+An autonomous System of Ordinary Differential Equations is a system which does NOT explicitly depend on the independent variables. It is of the form $$ \frac{d}{dt} x(t) = f(x(t))\hspace{0.15cm}; \hspace{0.5cm} x \in \mathbb{R}^n $$
+Solutions are invariant under horizontal translations.
+Proof: Say, $x_1(t)$ is a solution of the ODE $\frac{dx}{dt} = f(x)$, $x(0) = x_0$.\ Then $x_2(t) = x_1(t-t_0)$ solves $\frac{dx}{dt} = f(x)$, $x(t_0) = x_0$.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:published_time" content="2024-06-18T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-06-18T00:00:00+00:00">
+
+
+
+
+<link rel="canonical" href="http://localhost:4321/projects/stability-analysis-of-odes/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.css" media="screen">
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.css" media="screen">
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="http://localhost:4321/">
+      Aritrabha Majumdar
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/contact/">Contact me</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container page">
+  <article>
+    <header>
+      <h1 class="title">
+        <a class="title-link" href="http://localhost:4321/projects/stability-analysis-of-odes/">
+          Stability Analysis of ODEs
+        </a>
+      </h1>
+    </header>
+
+    <h3 id="1-linear-systems">
+  1. Linear Systems
+  <a class="heading-link" href="#1-linear-systems">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>1.1Autonomous System</strong></p>
+<p>An autonomous System of Ordinary Differential Equations is a system which does NOT explicitly depend on the independent variables. It is of the form
+$$
+\frac{d}{dt} x(t) = f(x(t))\hspace{0.15cm}; \hspace{0.5cm} x \in \mathbb{R}^n
+$$</p>
+<p><em><strong>Solutions are invariant under horizontal translations.</strong></em></p>
+<p><strong>Proof:</strong>
+Say, $x_1(t)$ is a solution of the ODE $\frac{dx}{dt} = f(x)$, $x(0) = x_0$.\
+Then $x_2(t) = x_1(t-t_0)$ solves $\frac{dx}{dt} = f(x)$, $x(t_0) = x_0$.\
+Now we set $s = t - t_0$ which essentially gives $x_2(t) = x_1(s)$ and $ds = dt$. Thus,
+$$
+\frac{d}{dt}x_2(t) = \frac{d}{ds} x_1(s) = f(x_1(s)) = f(x_2(t))
+$$
+And for the initial condition, we have $x_2(t_0) = x_1(t_0-t_0) = x_0$</p>
+<p>An autonomous system of two first order differential equations has the form
+$$
+\frac{dx}{dt} = f(x,y)
+$$
+$$
+\frac{dy}{dt} = g(x,y)
+$$
+If the system is linear, we can express it in the given format
+$$
+\frac{dx}{dt} = ax + by
+$$
+$$
+\frac{dy}{dt} = cx + dy
+$$
+For which we can write</p>
+<p>$$
+\dot{\mathbf{x}} =
+\begin{pmatrix}
+\frac{dx}{dt}\
+\frac{dy}{dt}
+\end{pmatrix}
+= \begin{bmatrix}
+a &amp; b \
+c &amp; d
+\end{bmatrix}
+\begin{pmatrix}
+x \
+y
+\end{pmatrix}
+= A\mathbf{x}\hspace{0.25cm} ;\hspace{0.25cm} (a,b,c,d)\in \mathbb{R}^4
+$$</p>
+<p><strong>1.2Uncoupled System</strong></p>
+<p>An uncoupled system of Ordinary Differential Equations is a system in which differential equation of one of the dependent variables is independent of the others. Clearly in this case, the matrix $A$ is (NOT always) be diagonal.
+$$
+\frac{dx}{dt} = ax \implies x = c_1e^{at}
+$$
+$$
+\frac{dy}{dt} = by \implies y = c_2e^{bt}
+$$</p>
+<p>$$
+\dot{\mathbf{x}} =
+\begin{bmatrix}
+a &amp; 0 \
+0 &amp; b
+\end{bmatrix}
+$$</p>
+<p>After a bit careful examination, it is evident that the solutions of this differential equation lies on $\mathbb{R}^2$ and they have the form $y = kx^{\frac{b}{a}}$, where $k = \frac{c_2^\frac{1}{b}}{c_1^\frac{1}{a}}$.\
+\paragraph{\textbf{Phase Plane:}} While trying to describe the motion of the particle governed by the provided differential equations, we can draw the solution curves in the plane $\mathbb{R}^n$, and this is known as the \emph{Phase Plane}. Clearly, in the above uncoupled system, $\mathbb{R}^2$ is the \emph{Phase Plane}.
+\paragraph{\textbf{Phase Portrait:}} The set of all solution curves drawn in the Phase space is known as \emph{Phase Portrait}.
+\paragraph{\textbf{Dynamical Systems:}} A dynamical system governed by $\dot{\mathbf{x}} = A\mathbf{x}$ is a function $\phi : \mathbb{R}^n \times\mathbb{R} \mapsto \mathbb{R}^n$ and it is given by $\phi(\mathbf{C},t) = \mathbf{C}e^{At}$. Geometrically, it describes motion of points in phase plane along the solution curves.
+\paragraph{\textbf{Equilibrium Point:}} For
+$c_1 = c_2 = 0$, $\mathbf{x}(t) = 0$ $\forall t \in \mathbb{R}$ and the origin is referred to as an \emph{equilibrium point} of a system of Differential Equations.
+\
+\
+The function $f(\mathbf{x}) = A\mathbf{x}$ defines a mapping $f:\mathbb{R}^n \mapsto \mathbb{R}^n$; which defines a vector field on $\mathbb{R}^n$. If we draw each vector along with its initial points, then we get a pictorial representation of the vector field. It is an interesting observation that at each point in the \emph{phase space}, the solution curve is tangent to the vectors in the vector field. Actually, it is pretty obvious, as at time $t$, the velocity vector $\mathbf{v}(t) = \dot{\mathbf{x}}(t)$ is tangent to the solution curve.
+\
+\
+We observe this for $\dot{\mathbf{x}}=I\mathbf{x}$
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{untitled.png}
+\caption{Vector field representation for $\dot{\mathbf{x}}=I\mathbf{x}$}
+\label{}
+\end{figure}
+\begin{tcolorbox}
+\textbf{Asymptotic Stability of Origin:} Here, we look at
+$$
+\lim_{t\to\infty}(x(t),y(t)) = \lim_{t\to\infty}(c_1e^{at},c_2e^{bt})
+$$
+If $a &lt; 0$ and $b &lt; 0$, then this limit goes to $(0,0)$. Otherwise, most of the solutions diverge to infinity,\
+Roughly speaking, an equilibrium $(x_0,y_0)$ is asymptotically stable if every trajectory $(x(t),y(t))$ beginning from an initial condition near $(x_0,y_0)$ stays near $(x_0,y_0)$ for $t &gt;0$, and
+$$
+\lim _{t\to \infty }(x(t),y(t)) = (x_0,y_0)
+$$
+The equilibrium is unstable if there are trajectories with initial conditions arbitrarily close to the equilibrium that move far away from that equilibrium.\
+Later on, we will discuss about this in greater detail.\
+\</p>
+<pre><code> \textbf{Invariance of the Axes:} There is another observation that we can make for uncoupled systems. Suppose that the initial condition for an uncoupled system lies on the $x$ axis; that is, suppose $y_0=0$, then the solution $(x(t),y(t))=(x_0e^{at},0)$ also lies on the $x$ axis for all time. Similarly, if the initial condition lies on the $y$ axis, then the solution $(0,y_0e^{bt})$ lies on the $y$ axis for all time.
+ \end{tcolorbox}
+</code></pre>
+<h1 id="endbmatrix">
+  \subsection{Diagonalization}
+\paragraph{\textit{\textbf{Theorem:}}} If \emph{eigenvalues} $\lambda_1,\lambda_2,&hellip;,\lambda_n$ of a matrix $A$ are \emph{real} and \emph{distinct}, then any set of corresponding \emph{eigenvectors} ${v_1,v_2,&hellip;v_n}$ forms a basis of $\mathbb{R}^n$. The matrix $P = \begin{bmatrix}
+v_1 &amp; v_2 &amp; &hellip; &amp; v_n
+\end{bmatrix}$ is invertible and
+$$
+P^{-1}AP = \begin{bmatrix}
+\lambda_{1} &amp; &amp; \
+&amp; \ddots &amp; \
+&amp; &amp; \lambda_{n}<br>
+\end{bmatrix}
+$$
+\
+\
+This \emph{theorem} can be used to reduce the linear system $\dot{\mathbf{x}} = A\mathbf{x}$
+to an uncoupled linear system. To do so, we first define the change of coordinates $\mathbf{x} = P\mathbf{y}$. So we have,
+$$\dot{\mathbf{y}} = P^{-1}\dot{\mathbf{x}} = P^{-1}A\mathbf{x} = P^{-1}AP\mathbf{y}$$
+$$
+\implies \dot{\mathbf{y}} = \begin{bmatrix}
+\lambda_1 &amp; &amp; \
+&amp; \ddots &amp; \
+&amp; &amp; \lambda_n
+\end{bmatrix}
+\mathbf{y}
+$$
+$$
+\implies \mathbf{y}(t) = \begin{bmatrix}
+e^{\lambda_1t} &amp; &amp; \
+&amp; \ddots &amp; \
+&amp; &amp; e^{\lambda_nt}
+\end{bmatrix}
+\mathbf{y}(0)
+$$
+$$
+\implies P^{-1}\mathbf{x(t)} = \begin{bmatrix}
+e^{\lambda_1t} &amp; &amp; \
+&amp; \ddots &amp; \
+&amp; &amp; e^{\lambda_nt}
+\end{bmatrix} P^{-1}\mathbf{x}(0)
+$$
+$$
+\implies\mathbf{x}(t) = P \begin{bmatrix}
+e^{\lambda_1t} &amp; &amp; \
+&amp; \ddots &amp; \
+&amp; &amp; e^{\lambda_nt}
+\end{bmatrix} P^{-1}\mathbf{x}(0)
+$$
+\begin{tcolorbox}
+{\large{\textit{\textbf{Stable, Unstable and Center Subspace}}}}\
+It is evident that the solution is stable $\forall\hspace{0.1cm}t\in\mathbb{R}$ iff all \emph{eigenvalues} are negative. Keeping this in mind, we consider ${v_1,\dots,v_k}$ to be the \emph{eigenvectors} corresponding to \emph{negative eigenvalues}, and ${v_{k+1},\dots,v_n}$ to be the \emph{eigenvectors} corresponding to \emph{positive eigenvalues}.\
+Then we denote the \emph{stable subspace of the Linear System} by
+$$
+E^S =  span{v_1,\dots,v_k}
+$$
+and the \emph{unstable subspace of the Linear System} by
+$$
+E^U = span{v_{k+1},\dots,v_n}
+$$
+If we have \emph{pure imaginary eigenvalues}, then we also get a \emph{center subspace}, namely $E^C$.
+\end{tcolorbox}
+\subsection{Matrix Norm}
+\textit{Here, while performing all the calculations, we consider $L^2$ norm.}\
+We define the \emph{norm} of a matrix $A$ to be
+$$
+||A|| = \max_{x\in \mathbb{R}^n\setminus{\mathbf{0}}}\frac{||Ax||}{||x||} = \max_{||x||\leq1}||Ax||
+$$
+\begin{tcolorbox}
+\textbf{Some Properties:}
+\begin{itemize}
+\item $||A||\geq0$ ; $||A|| = 0 \iff A = 0$.
+\item $||\lambda A|| \leq |\lambda|\cdot||A||$ , $\lambda\in\mathbb{R},A\in\mathbb{R}^n$.
+\item $||A + B|| \leq ||A|| + ||B||$.
+\item $||Ax|| \leq ||A|| \cdot ||x||$.
+\item $||AB|| \leq ||A|| \cdot ||B||.$
+\item $||A^k|| \leq ||A||^k$, $k\in \mathbb{N}\cup{0}$
+\item $|T^{-1}| \geq \frac{1}{|T|}$
+\end{itemize}
+\end{tcolorbox}
+Now, $||Ax||\geq 0$ for all $||x||\leq 1$; hence $||A||\geq 0$.\
+Now $A = 0 \implies ||Ax|| = 0\hspace{0.2cm}\forall x\in\mathbb{R}^n \implies ||A|| = 0$.\
+Say, the $(i,j)^{\text{th}}$ entry of $A$ is non zero. Hence $||Ax|| = \sqrt{a_{ij}^2x_j^2} &gt; 0$.\hspace{0.1cm}$(x_j \neq 0)$ Similarly by induction, we can show that if $k$ elements of $A$ are non-zero, then $||Ax||&gt;0$. Hence if $||A||=0$, then $A = 0$.\
+$\therefore ||A||\geq0$ and $||A|| = 0 \iff A = 0.\hspace{0.25cm}\blacksquare$\
+\
+On the other hand,
+$$||\lambda A|| = \max_{||x||\leq1}||\lambda Ax|| = \max_{||x||\leq1}|\lambda|\cdot||Ax|| = |\lambda|\max_{||x||\leq1}||Ax|| = |\lambda|\cdot||A|| \hspace{0.25cm};\hspace{0.25cm} \lambda\in\mathbb{R}\hspace{0.2cm}\blacksquare
+$$
+Again,
+$$
+||A + B|| = \max_{||x||\leq1}||(A + B)x|| \leq \max_{||x||\leq1}(||Ax|| + ||Bx||) \leq \left(\max_{||x||\leq1}||Ax|| + \max_{||x||\leq1}||Bx||\right) = ||A|| + ||B|| \hspace{0.15cm}\blacksquare
+$$
+Again,
+$$
+||A|| = \max_{x\in \mathbb{R}^n\setminus{\mathbf{0}}}\frac{||Ax||}{||x||}  \implies \frac{||Ax||}{||x||} \leq ||A|| \implies ||Ax|| \leq ||A||\cdot||x||\hspace{0.15cm}\blacksquare
+$$
+Moreover,
+$$
+||AB|| = \max_{||x||\leq1}||ABx|| \leq ||A||\max_{||x||\leq1}||Bx|| = ||A||\cdot||B|| \hspace{0.15cm} \blacksquare
+$$
+We also observe
+$$
+||A^k|| \leq ||A||\cdot||A^{k-1}|| \leq \dots \leq ||A||^k\hspace{0.15cm}\blacksquare
+$$
+And lastly,
+$$
+1 = |TT^{-1}|\leq|T|\cdot|T^{-1}|\implies|T^{-1}| \geq \frac{1}{|T|}\hspace{0.25cm}\blacksquare
+$$
+\begin{tcolorbox}
+\textbf{Limit of a Linear Operator:} A sequence of linear operators ${T_k}<em>{k\geq1} \subseteq \mathcal{L}(\mathbb{R}^n)$ is said to converge to a limiting linear operator $T\in\mathcal{L}(\mathbb{R}^n)$ as $k\to\infty$ if for every $\varepsilon &gt; 0 $, $\exists N \in \mathbb{N}$ such that $\forall k \geq N$, $||T_k - T|| &lt; \varepsilon.$\
+\
+\textbf{Show that for each $t\in \mathbb{R}$, the solution of $\dot{\mathbf{x}} = A\mathbf{x}$ is a continuous function of the initial condition.}\
+\
+{\textbf{Proof:}} Say, the solution obtained is given by $\phi(t,\mathbf{x_0}) = \mathbf{x_0}e^{At}$. For a fixed t, we take the matrix norm to be defined analogously as $L^2$ norm. We also define $\delta := \frac{\varepsilon}{||e^{At}||}$. Now for $||\mathbf{y_0}-\mathbf{x_0}||&lt;\delta$, we have $||\phi(t,\mathbf{y_0}) - \phi(t, \mathbf{x_0})|| \leq ||e^{At}|| \cdot ||\mathbf{y_0}-\mathbf{x_0}|| &lt; \varepsilon$\hspace{0.5cm}$\blacksquare$
+\end{tcolorbox}
+\subsection{Exponentials of Operators}
+Say we have a given $T\in\mathcal{L}(\mathbb{R}^n)$ and a given $t_0\in\mathbb{R}$. Say $||T|| = a$\
+$$
+\left|\frac{T^kt^k}{k!}\right| \leq  \frac{||T^k||\cdot|t|^k}{k!} \leq  \frac{||T||^k\cdot t_0^k}{k!} = \frac{a^k\cdot t_0^k}{k!}
+$$
+for all $|t| &lt; t_0$. Now
+$$
+\sum <em>{k = 0}^\infty \frac{{(at_0)^k}}{k!} = e^{at_0}
+$$
+So, by \emph{Weierstrass M test}, the sum $\sum</em>{k=0}^\infty\frac{T^kt^k}{k!}$ converges \emph{uniformly} and \emph{absolutely}. So, now we define the matrix exponential as
+$$
+e^{At} = \sum</em>{k=0}^\infty\frac{A^kt^k}{k!} \hspace{0.25cm};\hspace{0.25cm} t\in\mathbb{R}
+$$
+Note that $|e^{At}|\leq e^{|T|\cdot|t|}$
+\paragraph{\textbf{Theorem 1:}} If $P,T\in\mathcal{L}(\mathbb{R}^n)$ and $S = PTP^{-1}$, then $e^S = Pe^TP^{-1}$.
+\paragraph{\textbf{Proof:}} According to the definition,
+$$
+e^S = \sum_{k = 1}^\infty\frac{S^k}{k!} = \sum_{k = 1}^\infty\frac{(PTP^{-1})^k}{k!} = P \sum_{k = 1}^\infty\frac{T^k}{k!} P^{-1} = Pe^TP^{-1}\hspace{0.2cm}\blacksquare
+$$
+\paragraph{Theorem 2:} If $S,T\in\mathcal{L}(\mathbb{R}^n)$ and they \emph{commute}, then $e^{S+T} = e^Se^T$.
+\paragraph{Proof:} If $S$ and $T$ \emph{commute}, then
+$$
+(S+T)^n = \sum_{k=0}^n{n\choose k}S^kT^{n-k}
+$$
+Therefore
+$$
+e^{S+T} = \sum_{n = 0}^\infty\frac{(S+T)^n}{n!} = \sum_{n = 0}^\infty\frac{1}{n!}\sum_{k + j =n}\frac{n!}{k!j!}S^kT^j = \left(\sum_{k = 0}^\infty\frac{S^k}{k!}\right)\cdot\left(\sum_{j = 0}^\infty\frac{T^j}{j!}\right) = e^Se^T\hspace{0.2cm}\blacksquare
+$$
+\paragraph{\textbf{Theorem 3:}} if $A = \begin{bmatrix}
+a &amp; -b\
+b &amp; a\
+\end{bmatrix}$, then $e^A = e^a\begin{bmatrix}
+\cos{b} &amp; -\sin{b}\
+\sin{b} &amp; \cos{b}\
+\end{bmatrix}$
+\paragraph{\textbf{Proof:}} we take $z = a+ib = re^{i\theta}$; under standard notations. Now we can write
+$$
+A^2 = \begin{bmatrix}
+r\cos{\theta} &amp; -r\sin{\theta}\
+r\sin{\theta} &amp; r\cos{\theta}\
+\end{bmatrix}
+\begin{bmatrix}
+r\cos{\theta} &amp; -r\sin{\theta}\
+r\sin{\theta} &amp; r\cos{\theta}\
+\end{bmatrix}
+= \begin{bmatrix}
+r^2\cos{2\theta} &amp; -r^2\sin{2\theta}\
+r^2\sin{2\theta} &amp; r^2\cos{2\theta}\
+\end{bmatrix}
+= \begin{bmatrix}
+\text{Re}(z^2) &amp; -\text{Im}(z^2) \
+\text{Im}(z^2) &amp; \text{Re}(z^2)\
+\end{bmatrix}
+$$
+Thus by induction,$A^k =  \begin{bmatrix}
+\text{Re}(z^k) &amp; -\text{Im}(z^k) \
+\text{Im}(z^k) &amp; \text{Re}(z^k)\
+\end{bmatrix}$.
+Now we have
+$$
+e^A = \sum_{k=0}^\infty \frac{A^k}{k!} =  \sum_{k=0}^\infty\begin{bmatrix}
+\text{Re}(\frac{z^k}{k!}) &amp; -\text{Im}(\frac{z^k}{k!}) \
+\text{Im}(\frac{z^k}{k!}) &amp; \text{Re}(\frac{z^k}{k!})\
+\end{bmatrix}
+  <a class="heading-link" href="#endbmatrix">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>\begin{bmatrix}
+\text{Re}(e^z) &amp; -\text{Im}(e^z) \
+\text{Im}(e^z) &amp; \text{Re}(e^z)\
+\end{bmatrix}
+$$
+Now $e^z = e^{a+ib} = e^a(\cos{b}+i\sin{b})$, so we have $\text{Re}(e^z) = e^a\cos{b}$ and $\text{Im}(e^z) = e^a\sin{b}$.
+$$
+\therefore e^A = e^a\begin{bmatrix}
+\cos{b} &amp; -\sin{b}\
+\sin{b} &amp; \cos{b}\
+\end{bmatrix} \hspace{0.25cm}\blacksquare
+$$
+\paragraph{\emph{\textbf{Note:}}} \textit{If $a = 0$, this matrix represents anticlockwise rotation by $b$ degrees.}\
+\paragraph{\textbf{Theorem 4:}} If $A = \begin{bmatrix}
+a &amp; b\
+0 &amp; a\
+\end{bmatrix}$, then $e^A = e^a\begin{bmatrix}
+1 &amp; b\
+0 &amp; 1\
+\end{bmatrix}$
+\paragraph{\textbf{Proof:}} $A = aI + \begin{bmatrix}
+0 &amp; b\
+0 &amp; 0\
+\end{bmatrix} = aI + B$. Clearly $aI$ and $B$ commute. Moreover $B^k = 0\hspace{0.1cm}\forall k\geq2\implies e^B = I+B$. So we can hereby conclude
+$$
+e^A = e^{aI+B} = e^ae^B = e^a\begin{bmatrix}
+1 &amp; b\
+0 &amp; 1\
+\end{bmatrix} \hspace{0.25cm} \blacksquare
+$$
+\paragraph{\textbf{Theorem 5:}} If $A = PDP^{-1}$, where $D$ is \emph{diagonal}, then $\det(e^A) = e^{\text{trace}(D)}$.
+\paragraph{\textbf{Proof:}} $e^A = Pe^DP^{-1}\implies \det{(e^A)} = \det{(Pe^DP^{-1})} = \det{(e^D)}$ As $D$ is \emph{diagonal} we can write, $$e^A = e^{\text{trace}(D)} = e^{\text{trace}(P^{-1}AP)} = e^{\text{trace}(P^{-1}PA)} = e^{\text{trace}(A)}\hspace{0.25cm}\blacksquare$$
+\paragraph{\textbf{Theorem 6:}} If $\mathbf{x}$ is an \textit{eigenvector} of $T$ with \textit{eigenvalue} $\lambda$, then $\mathbf{x}$ is also an \emph{eigenvector} of $e^T$ with \emph{eigenvalue} $e^\lambda$
+\paragraph{\textbf{Proof:}} $T^2\mathbf{x} = T(\lambda\mathbf{x}) = \lambda(T\mathbf{x}) = \lambda^2\mathbf{x}$. Thus by induction, $T^k\mathbf{x} = \lambda^k\mathbf{x}$. Now we have
+$$
+e^T\mathbf{x} = \left(\sum_{k=0}^\infty\frac{T^k}{k!}\right)\mathbf{x} = \left(\sum_{k=0}^\infty\frac{\lambda^k}{k!}\right)\mathbf{x} = e^\lambda\mathbf{x}\hspace{0.25cm}\blacksquare
+$$
+\paragraph{\textbf{Theorem 7:}} $T\in\mathcal{L}(\mathbb{R}^n)$ and $E \subset \mathbb{R}^n$ is $T$ invariant; then show $E$ is also $e^T$ invariant.
+\paragraph{\textbf{Proof:}} Clearly if $\mathbf{v}\in E$, then it is a linear combination of the basis vectors, so is $\frac{\mathbf{v}}{k!}$,\hspace{0.1cm}$k\in\mathbb{N}\cup{0}$.\
+On the other hand, it is trivial that  $E\supseteq T(E) \supseteq T^2(E) \supseteq \dots \supseteq T^k(E) \supseteq \dots$\
+Say, we have
+$$
+\mathbf{v} = \bigcap_{k\in\mathbb{N}\cup{0}} T^k(E)\hspace{1cm} (\text{We define } T^0(E) = E)
+$$
+Now,
+$$
+e^T(\mathbf{v}) = \left(\sum_{k = 0}^\infty\frac{T^k}{k!}\right)(\mathbf{v}) = \sum_{k = 0}^\infty{T^k}\left(\frac{\mathbf{v}}{k!}\right)
+$$
+We know
+$$
+T^k\left(\frac{\mathbf{v}}{k!}\right) \in E \hspace{0.15cm}\forall k\in\mathbb{N}\cup{0}
+$$
+These altogether concludes
+$$
+e^T(\mathbf{v}) \in E \implies e^T(E)\subseteq E\hspace{0.25cm}\blacksquare
+$$
+\subsection{The Fundamental Theorem for Linear Systems}
+Here, our aim is to establish the fact that for $\mathbf{x_0} \in \mathbb{R}^n$, the initial value problem
+$$
+\dot{\mathbf{x}} = A\mathbf{x}
+$$
+$$
+\mathbf{x(0)} = \mathbf{x_0}
+$$
+has a unique solution $\forall t\in\mathbb{R}$ which is given by
+$$
+\mathbf{x}(t) = \mathbf{x_0}e^{At}
+$$
+\begin{tcolorbox}
+\paragraph{\textbf{Lemma:}} Let $A$ be a square matrix. Then
+$$
+\frac{d}{dt}e^{At} = Ae^{At}
+$$
+\paragraph{\textbf{Proof:}}
+$$
+\frac{d}{dt}e^{At} = \lim_{h\to0}\frac{e^{A(t+h)}-e^{At}}{h} = e^{At}\lim_{h\to0}\frac{e^{Ah}-I}{h} = e^{At}\lim_{h\to0}\left(A+\sum_{k=1}^\infty \frac{A^{k+1}h^k}{(k+1)!}\right) = Ae^{At}
+$$
+\
+\textit{\textbf{Note:} Here, we can place the limit inside the summation because $|h|\leq1$}
+\end{tcolorbox}
+If $\mathbf{x}(t)$ has the mentioned form, then we can easily observe
+$$
+\mathbf{x}&rsquo;(t) = \frac{d}{dt}\mathbf{x_0}e^{At} = \mathbf{x_0}Ae^{At} = A\mathbf{x}(t)
+$$
+Now to show that this is the only solution, we consider $\mathbf{x}(t)$ to be any solution of the provided initial value problem. Now we fix $\mathbf{y}(t) = e^{-At}\mathbf{x}(t)$. Now we differentiate both side to obtain
+$$
+\mathbf{y}&rsquo;(t) = -Ae^{-At}\mathbf{x_0} + e^{-At}\mathbf{x}&rsquo;(t) = -Ae^{-At}\mathbf{x_0} + e^{-At}A\mathbf{x}(t) = 0
+$$
+Setting $t=0$, we obtain $\mathbf{y}(0) = \mathbf{x_0}$, and this suffices the proof of uniqueness. $\hspace{0.25cm}\blacksquare$
+\subsection{Linear Systems in $\mathbb{R}^2$}
+In this section, we describe various \emph{phase portraits} of the equation
+$$
+\mathbf{\dot{x}} = A\mathbf{x}\hspace{0.25cm},\hspace{.25cm}\mathbf{x}\in\mathbb{R}^2
+$$
+Say, $\mathbf{v}$ is an \emph{eigenvector} of $A$ with \emph{eigenvalue} $\lambda$. Now, $\mathbf{x} = A\mathbf{v}$, where $a$ is a \textit{scalar}. Hence
+$$
+\mathbf{\dot{x}} = A(a\mathbf{v}) = a\lambda v
+$$
+The derivative is a multiple of $\mathbf{v}$ and hence points along the line determined by $\mathbf{v}$. As $\lambda &gt; 0$, the derivative points in the direction of $\mathbf{v}$ when $a$ is positive and in the opposite direction when $a$ is negative.\
+We consider $A = \begin{bmatrix}
+1 &amp; 1\
+0 &amp; 2\
+\end{bmatrix}$ and we draw the \emph{vector field} and a couple of solutions \textit{(go to next page)}. Notice that the picture looks like a \textit{\textbf{source}} with arrows coming out from the origin. Hence we call this type of picture a source or sometimes an \textit{\textbf{unstable node}}.\
+\
+If $A = \begin{bmatrix}
+-1 &amp; -1\
+0 &amp; -2\
+\end{bmatrix}$, then both the \textit{eigenvalues} are \textit{negative}. We call this kind of picture a \textit{\textbf{sink}} or sometimes a \textit{\textbf{stable node}}.\
+\
+If $A = \begin{bmatrix}
+1 &amp; 1\
+0 &amp; -2\
+\end{bmatrix}$, then one \textit{eigenvalue} is positive, and the other is negative. Then, we reverse the arrows on one line (corresponding to the negative eigenvalue) in \textbf{Figure 2}. This is known as a \textit{\textbf{Saddle}}\
+\
+Suppose the eigenvalues are purely imaginary. That is, suppose the eigenvalues are $\pm ib$. For example, let $A = \begin{bmatrix} 0&amp;1\-4&amp;0\end{bmatrix}$. Consider the eigenvalue $2i$
+and its eigenvector $\begin{bmatrix} 1\ 2i \end{bmatrix}$. The real and imaginary parts of $\vec{v} e^{i 2t}$ are
+$$
+\text{Re} \begin{bmatrix} 1\2i \end{bmatrix} e^{i2t} = \begin{bmatrix} \cos(2t)\-2\sin(2t) \end{bmatrix},\quad  \text{Im} \begin{bmatrix} 1\2i \end{bmatrix} e^{i2t} = \begin{bmatrix} \sin(2t) \2\cos(2t) \end{bmatrix}<br>
+$$
+We can take any linear combination of them to get other solutions, which one we take depends on the initial conditions. Now note that the real part is a \textit{parametric equation} for an \textit{ellipse}. Same with the imaginary part and in fact any linear combination of the two. This is what happens in general when the \textit{eigenvalues} are \textit{purely imaginary}. So when the eigenvalues are purely imaginary, we get ellipses for the solutions. This type of picture is sometimes called a \textit{\textbf{center}}. \
+\
+Now suppose the complex eigenvalues have a positive real part. For example, let $A = \begin{bmatrix} 1&amp;1 \ -4&amp;1 \end{bmatrix}$. We take $1+2i$ and its eigenvector $\begin{bmatrix} 1 \ 2i \end{bmatrix}$, and find the real and imaginary of $\vec{v}e^{(1+2i)t}$ are
+$$
+\text{Re} \begin{bmatrix} 1\2i \end{bmatrix} e^{(1+2i)t} =e^t \begin{bmatrix} \cos(2t)\-2\sin(2t) \end{bmatrix} \quad  \text{Im} \begin{bmatrix} 1\2i \end{bmatrix} e^{(1+2i)t} =e^t \begin{bmatrix} \sin(2t) \2\cos(2t) \end{bmatrix}
+$$
+Note the $e^t$ in front of the solutions. This means that the solutions grow in magnitude while spinning around the origin. Hence we get a \textbf{\textit{spiral source.}}\
+\
+Finally suppose the complex eigenvalues have a negative real part. Here we get a $e^{-t}$ in front of the solution. This means that the solutions shrink in magnitude while spinning around the origin. Hence we get a \textit{\textbf{spiral sink}}.
+\begin{figure}[h]
+\centering
+\subfigure[]{\includegraphics[width=0.45\textwidth]{source.png}}
+\subfigure[]{\includegraphics[width=0.45\textwidth]{sink.png}}
+\
+\subfigure[]{\includegraphics[width=0.45\textwidth]{saddle.png}}
+\subfigure[]{\includegraphics[width=0.45\textwidth]{center.png}}
+\
+\caption{(a) Source (b) Sink (c) Saddle (d) Center}
+\label{fig:foobar}
+\end{figure}
+\newpage
+\begin{figure}[htb]
+\centering
+\subfigure[]{\includegraphics[width=0.45\textwidth]{spiral source.png}}
+\subfigure[]{\includegraphics[width=0.45\textwidth]{spiral sink.png}}
+\caption{(a) Spiral Source (b)Spiral Sink}
+\label{fig:enter-label}
+\end{figure}
+\subsection{System with Complex \emph{eigenvalues}}
+If $A \in GL_{2n}(\mathbb{R})$ and has complex \emph{eigenvalues}, they occur as \textit{conjugate pairs.} The following Theorem gives us an insight about this.
+\paragraph{\textbf{Theorem:}} If $A \in GL_{2n}(\mathbb{R})$ has $2n$ distinct \textit{complex eigenvalues}, $\lambda_j = a_j + ib_j$ and $\overline{\lambda_j} = a_j - ib_j$, $\forall j = 1(1)n$ with corresponding \textit{eigenvectors} $\mathbf{w}<em>j = \mathbf{u}<em>j + i\mathbf{v}<em>j$ and $\overline{\mathbf{w}<em>j} = \mathbf{u}<em>j - i\mathbf{v}<em>j$; then ${\mathbf{u_1},\mathbf{v_1},\dots,\mathbf{u_n},\mathbf{v_n}}$ forms a \textit{basis} for $\mathbb{R}^{2n}$. Moreover the matrix $P = \begin{bmatrix}
+\mathbf{v_1} &amp; \mathbf{u_1} &amp; \dots &amp; \mathbf{v_n} &amp; \mathbf{u_n}
+\end{bmatrix}$ is \textit{invertible} and
+$$
+P^{-1}AP = \text{diag} \begin{bmatrix}
+a_j &amp; -b_j \
+b_j &amp; a_j
+\end{bmatrix}
+$$ is a $2n\times2n$ matrix with $2\times2$ blocks across the diagonal.\
+\paragraph{\textbf{Proof:}} We say, if $V$ is a real vector space, its \textit{complexification} $V^{\mathbb{C}}$ is the complex vector space consisting of elements $x+iy$ where $x,y\in V$. If $T: V \to W$, its \textit{complexification} $T^{\mathbb{C}}: V^{\mathbb{C}} \to W^{\mathbb{C}}$ is defined by
+$$
+T^{\mathbb{C}}(x+iy) = Tx + iTy
+$$
+Clearly $T^{\mathbb{C}}$ has same \textit{eigenvalues} as of $T$. So we have $\mathbf{w} = \mathbf{u} + i\mathbf{v}$ and $\overline{\mathbf{w}} = \mathbf{u} - i\mathbf{v}$ in $V^{\mathbb{C}}$ with \textit{eigenvalues} $\lambda$ and $\overline{\lambda}$. Clearly
+$$
+\mathbf{u} = \frac{\mathbf{w} + \overline{\mathbf{w}}}{2} \hspace{0.5cm},\hspace{0.5cm} \mathbf{v} = \frac{\mathbf{w} - \overline{\mathbf{w}}}{2i}
+$$
+Clearly, $\mathbf{u}$ and $\mathbf{v}$ are \textit{linearly independent}, and they form a \textit{basis} for $V$. Now we want to compute the matrix of $T$ with respect to this new \textit{basis}. So we compute
+$$
+T^{\mathbb{C}}(\mathbf{w}) = \lambda\mathbf{w} = (a+ib)(\mathbf{u}+i\mathbf{v}) = (a\mathbf{u}-b\mathbf{v}) + i (a\mathbf{v}+b\mathbf{u})
+$$
+Moreover we also have
+$$
+T^{\mathbb{C}}(\mathbf{w}) = T\mathbf{u} + iT\mathbf{v}
+$$
+So, on comparison, we have
+$$
+T\mathbf{v} = a\mathbf{v} + b\mathbf{u} = \begin{bmatrix}
+\mathbf{v} &amp; \mathbf{u}
+\end{bmatrix}
+\begin{bmatrix}
+a \ b
+\end{bmatrix} \hspace{0.5cm},\hspace{0.5cm}
+T\mathbf{u} = a\mathbf{u} - b\mathbf{v} = \begin{bmatrix}
+\mathbf{v} &amp; \mathbf{u}
+\end{bmatrix}\begin{bmatrix}
+-b \ a
+\end{bmatrix}
+$$
+So, clearly in the \textit{basis} ${\mathbf{v},\mathbf{u}}$, the matrix of $T$ is $\begin{bmatrix}
+a &amp; -b\
+b &amp; a
+\end{bmatrix}$ and hereby we can conclude the matrix $P = \begin{bmatrix}
+\mathbf{v_1} &amp; \mathbf{u_1} &amp; \dots &amp; \mathbf{v_n} &amp; \mathbf{u_n}
+\end{bmatrix}$ is \textit{invertible} and
+$$
+P^{-1}AP = \text{diag} \begin{bmatrix}
+a_j &amp; -b_j \
+b_j &amp; a_j
+\end{bmatrix}
+$$ is a $2\times2$ matrix with blocks across the diagonal.$\hspace{0.15cm}\blacksquare$\
+\begin{tcolorbox}
+If we use $P = \begin{bmatrix}
+\mathbf{u_1} &amp; \mathbf{v_1} &amp; \dots &amp; \mathbf{u_n} &amp; \mathbf{v_n}
+\end{bmatrix}$, then we have $$
+P^{-1}AP = \text{diag} \begin{bmatrix}
+a_j &amp; b_j \
+-b_j &amp; a_j
+\end{bmatrix}
+$$
+\end{tcolorbox}
+So, now we have the solution of the initial value problem
+$$
+\dot{\mathbf{x}} = A\mathbf{x}\hspace{0.25cm},\hspace{0.25cm}\mathbf{x}(\mathbf{0}) = \mathbf{x_0}
+$$
+as
+$$
+\mathbf{x}(t) = P\hspace{0.1cm}\text{diag}\hspace{0.1cm}e^{a_jt}\begin{bmatrix}
+\cos{b_jt} &amp; -\sin{b_jt}\
+\sin{b_jt} &amp; \cos{b_jt}\
+\end{bmatrix}P^{-1}\mathbf{x_0}
+$$
+\subsection{Multiple \textit{eigenvalues}}
+Till now, we have only dealt with those systems which have \textit{distinct eigenvalues}. Now, we want to solve the system where $A$ has \emph{multiple eigenvalues}.
+\begin{tcolorbox}
+\textit{ \textbf{{\large Definition:}}}\
+\vfill
+Let $\lambda$ be a \textit{eigenvalue} of a $n\times n$ matrix $A$ with multiplicity $m\leq n$.
+Then for $k = 1(1)m$, any non-zero solution $\mathbf{v}$ of
+$$
+(A-\lambda I)^k\mathbf{v} = 0
+$$
+is known as a \textit{generalised eigenvector} of $A$.
+\end{tcolorbox}
+\paragraph{{\textbf{Theorem:}}} If $T\in \mathcal{L}(V)$ with \textit{real eigenvalues}, then there is \textit{only one way} of writing $T$ as $S + N$, where $S$ is \textit{diagonalizable}, $N$ is \textit{nilpotent}, and $SN = NS$.
+\paragraph{\textbf{Proof:}} Let $E_k$ be the \textit{generalised eigenspace} of $T$, $\forall k = 1(1)m$. We define $T_k = T |</em>{E_k}$. Now we have
+$$
+V = \bigoplus</em>{k = 1}^m E_k\hspace{0.5cm},\hspace{0.5cm} T = \bigoplus</em>{k = 1}^m T_k
+$$
+Note that $S$ and $N$ both commute with $S$ and $N$, hence both of them commute with $T = S + N$ as well. So we have $E_k$ is \textit{invariant} under $S$ and $N$. Now we say $S_k = \lambda_kI \in \mathcal{L}(E_k)$ and $N_k = T_k - S_k$. If we can show $S|</em>{E_k} = S_k$, it will then conclude $N|</em>{E_k} = N_k$, and thus we can show the \textit{uniqueness}.\
+Enough to show $S|</em>{E_k} - S_k = \mathbf{0}$.\
+Now, it is given that $S$ is \textit{diagonalizable}, so is $S|<em>{E_k}$, then $S|</em>{E_k} - \lambda_kI$ is also \textit{diagonalizable}. Hence $S|<em>{E_k} - S_k$ is diagonalizable.\
+Now, on the other hand, $S|</em>{E_k} - S_k = T|<em>{E_k} - N|</em>{E_k} - T_k + N_k = N_k - N|<em>{E_k}$. Here, $N|</em>{E_k}$ commutes with $T_k$ and $\lambda_kI$; so it also commutes with $N_k$. Using \textit{Binomial Theorem}, we can hereby conclude that $N_k - N|<em>{E_k}$ is \textit{nilpotent}.\
+So, $S|</em>{E_k} - S_k$ is a \textit{nilpotent} and \textit{diagonal} matrix, i.e $S|<em>{E_k} - S_k = \mathbf{0}\hspace{0.15cm}\blacksquare$
+\
+\
+So, now we have the solution of the initial value problem
+$$
+\dot{\mathbf{x}} = A\mathbf{x}\hspace{0.25cm},\hspace{0.25cm}\mathbf{x}(\mathbf{0}) = \mathbf{x_0}
+$$
+as
+$$
+\mathbf{x}(t) = P\hspace{0.1cm}\text{diag}\begin{bmatrix}
+e^{\lambda_jt}
+\end{bmatrix}P^{-1}\left[I + Nt + \dots + \frac{N^kt^k}{k!}\right]\mathbf{x_0}
+$$
+\begin{tcolorbox}
+If $\lambda$ is an\textit{eigenvalue} with multiplicity $n$, then the solution of the \textit{initial value problem} is
+$$
+\mathbf{x}(t) = e^{\lambda t} \left[I + Nt + \dots + \frac{N^kt^k}{k!}\right]\mathbf{x_0}
+$$
+\end{tcolorbox}
+Under the light of this theorem, we can right the theorem discussed in the previous section in a newly tailored way.
+\
+\
+{\textbf{Theorem:}} If $A \in GL</em>{2n}(\mathbb{R})$ has $2n$ \textit{complex eigenvalues}, $\lambda_j = a_j + ib_j$ and $\overline{\lambda_j} = a_j - ib_j$, $\forall j = 1(1)n$ with corresponding \textit{eigenvectors} $\mathbf{w}_j = \mathbf{u}_j + i\mathbf{v}_j$ and $\overline{\mathbf{w}_j} = \mathbf{u}_j - i\mathbf{v}_j$; then ${\mathbf{u_1},\mathbf{v_1},\dots,\mathbf{u_n},\mathbf{v_n}}$ forms a \textit{basis} for $\mathbb{R}^{2n}$. Moreover the matrix $P = \begin{bmatrix}
+\mathbf{v_1} &amp; \mathbf{u_1} &amp; \dots &amp; \mathbf{v_n} &amp; \mathbf{u_n}
+\end{bmatrix}$ is \textit{invertible}, $A = S + N$ and
+$$
+P^{-1}SP = \text{diag} \begin{bmatrix}
+a_j &amp; -b_j \
+b_j &amp; a_j
+\end{bmatrix}
+$$ is a $2n\times2n$ matrix with $2\times2$ blocks across the diagonal, the matrix $N$ is \textit{nilpotent} of order $k\leq 2n$.
+\
+\
+So, now we have the solution of the initial value problem
+$$
+\dot{\mathbf{x}} = A\mathbf{x}\hspace{0.25cm},\hspace{0.25cm}\mathbf{x}(\mathbf{0}) = \mathbf{x_0}
+$$
+as
+$$
+\mathbf{x}(t) = P\hspace{0.1cm}\text{diag}\hspace{0.1cm}e^{a_jt}\begin{bmatrix}
+\cos{b_jt} &amp; -\sin{b_jt}\
+\sin{b_jt} &amp; \cos{b_jt}\
+\end{bmatrix}P^{-1}\left[I + Nt + \dots + \frac{N^kt^k}{k!}\right]\mathbf{x_0}
+$$
+\subsection{Jordan Form}
+\subsection{Stability Theory}
+Say, for am matrix $A$ has \textit{generalised eigenvalues} $\lambda_j = a_j+ib_j$ and \textit{generalised eigenvector} $\mathbf{v}_j = \mathbf{u}_j + i\mathbf{w}_j$. Then the \textit{stable subspace}, \textit{unstable subspace} and \textit{central subspace} is given by
+$$
+E^S = \text{Span}{\mathbf{u}_j, \mathbf{v}_j \mid a_j &lt; 0}
+$$
+$$
+E^U = \text{Span}{\mathbf{u}_j, \mathbf{v}_j \mid a_j &gt; 0}
+$$
+$$
+E^C = \text{Span}{\mathbf{u}_j, \mathbf{v}_j \mid a_j = 0}
+$$
+Solutions in $E^S$ tend to approach $\mathbf{x(0)}$ as $t\to\infty$; and solutions in $E^U$ tend to approach $\mathbf{x(0)}$ as $t\to-\infty$. \
+The set of mappings $e^{At}:\mathbb{R}^n \to \mathbb{R}^n$ may be regarded as the movement of points $\mathbf{x_0}\in\mathbb{R}^n$ along the trajectories.\
+\paragraph{\textbf{Hyperbolic flow:}} If all \textit{eigenvalues} of $A$ has non-zero real parts, then the \textit{flow} $e^{At}:\mathbb{R}^n \to \mathbb{R}^n$ is called \textit{hyperbolic flow}, and the corresponding linear system is known as \textit{hyperbolic linear system}.\
+\
+A subspace $E \subset \mathbb{R}^n$ is said to be \textit{invariant with respect to the flow} if
+$e^{At}E \subset E$, $\forall t \in \mathbb{R}$.
+\begin{tcolorbox}
+\paragraph{\textbf{\large Lemma:}} Let $E$ be a \textit{generalised eigenspace} of matrix $A$ with respect to its \textit{generalised eigenvalue} $\lambda$. Show that $AE \subset E$.
+\
+\paragraph{\textbf{\large Proof:}} Let ${\mathbf{v}_1,\dots,\mathbf{v}<em>n}$ be basis of \textit{generalised eigenvectors} for $E$. Then for $\mathbf{v} \in E$
+$$
+\mathbf{v} = \sum</em>{k = 1}^nc_k\mathbf{v}<em>k \implies A\mathbf{v} = \sum</em>{k = 1}^nc_kA\mathbf{v}_k
+$$
+Now each of the $\mathbf{v}_k$s being \textit{generalised eigenvectors}, we say
+$$
+\mathbf{V}_k = (A-\lambda I)\hspace{0.5cm}\mathbf{V}_k\in\text{Ker}(A-\lambda I)^{j-1} \subset E
+$$
+Thus, by induction, $A\mathbf{v}_k = \lambda\mathbf{v}_k + \mathbf{V}<em>k \in E$, so does their linear combination. Hence $AE \subset E \hspace{0.15cm} \blacksquare$
+\end{tcolorbox}
+Clearly, according to the definition $\mathbb{R}^n = E^S \oplus E^U \oplus E^C$.\
+For $\mathbf{x_0}\in E^S$,
+$$
+\mathbf{x_0} = \sum</em>{k = 1}^{n_s}c_k\mathbf{V}<em>k \hspace{0.5cm}{\mathbf{V}<em>k}</em>{k = 1}^{n_s} \subset B \text{ is a \textit{basis} for the stable subspace }E^S
+$$
+Now,
+$$
+e^{At}\mathbf{x_0} = \sum</em>{k = 1}^{n_s}c_ke^{At}\mathbf{V}<em>k
+$$
+As $A^k\mathbf{V}<em>j \in E^S$, then $e^{At}\mathbf{x_0}\in E^S$, $\forall t \in \mathbb{R}$.\
+\
+So, $E^S$ is \textit{invariant} with respect to the \textit{flow}, so is $E^U$ and $E^C$.$\hspace{0.15cm}\blacksquare$
+\paragraph{\textbf{Sink (or Source):}} If all \textit{eigenvalues} has negative (or positive) real part, then the \textit{origin} is known as \textit{sink (or source)} of the linear system.
+\paragraph{\textbf{Theorem:}} The following statements are equivalent
+\begin{enumerate}
+\item[(a)] For all $\mathbf{x_0}\in \mathbb{R}^n$ $\lim</em>{t\to\infty}e^{At}\mathbf{x_0} = 0$ and for $\mathbf{x_0} \neq \mathbf{0}$, $\lim</em>{t\to-\infty}e^{At}\mathbf{x_0} = \infty$
+\item[(b)] All \textit{eigenvalues} of $A$ has negative real part.
+\item[(c)] There are positive constants $a,c,m,M\in\mathbb{R}$ such that $\forall \mathbf{x_0}\in \mathbb{R}^n$
+$$
+|e^{At}\mathbf{x_0}| \leq Me^{-ct}\mathbf{x_0}\hspace{0.5cm} t\geq0
+$$
+$$
+|e^{At}\mathbf{x_0}| \geq me^{-at}\mathbf{x_0}\hspace{0.5cm} t\leq0
+$$
+\end{enumerate}
+\paragraph{\textbf{Proof:}} Here we use the fact that any solution of the linear system is the linear combination of functions of the form $t^ke^{at}\cos{bt}$ or $t^ke^{at}\sin{bt}$.\
+\end{document}</p>
+
+  </article>
+</section>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ]
+      }
+    );"></script>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2024
+     Aritrabha Majumdar 
+    ·
+    
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.js"></script>
+  
+
+  
+
+  
+
+
+  
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>

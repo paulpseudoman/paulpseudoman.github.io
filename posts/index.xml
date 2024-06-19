@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Aritrabha Majumdar</title>
+    <link>https://paulpseudoman.github.io/posts/</link>
+    <description>Recent content in Posts on Aritrabha Majumdar</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 30 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://paulpseudoman.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Apple Bread Challenges</title>
+      <link>https://paulpseudoman.github.io/posts/apple-bread-challenges/</link>
+      <pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://paulpseudoman.github.io/posts/apple-bread-challenges/</guid>
+      <description>During the second semester, we had a course &amp;ldquo;Introduction to Statistics and Computation with data&amp;rdquo;. Our instructor Prof. Siva Athreya gave us a series of challenging questions to solve, each within a week. Although Most of it involved only coding, we had fun solving them (together!!)&#xA;Challenge 1: Link to heading Problem: A random walk on $\mathbb{Z}^2$, can be thought of as a position of particle, at time $n$, denoted by $S_n$ which is defined inductively below.</description>
+    </item>
+  </channel>
+</rss>
