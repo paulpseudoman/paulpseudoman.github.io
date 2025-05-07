@@ -1,0 +1,30 @@
+disabled = false
+languageCode = "en"
+languageName = "English"
+weight = 1
+title = "paul_pseudoman <span class='cursor'></span>"
+
+[params]
+  displayName = "EN"
+  isoCode = "en"
+  rtl = false
+  dateFormat = "2 January 2006"
+ #logo = "logo.jpg"
+   secondaryLogo = "logo.png"
+   description = "My Personal Website"
+   copyright = "&copy; 2025 Aritrabha Majumdar. All Rights Reserved."
+
+ [params.author]
+   name = "Aritrabha Majumdar"
+   email = "aritrabhamajumdar.math@gmail.com"
+    image = "pic.jpg"
+    imageQuality = 96
+  headline = "Undergraduate Student at Indian Statistical Institute, Bangalore"
+  # bio = "Undergraduate Student at Indian Statistical Institute, Bangalore"
+   links = [
+     {email = "mailto:aritrabhamajumdar.math@gmail.com"},
+    {github = "https://github.com/paulpseudoman" },
+    {linkedin = "https://www.linkedin.com/in/aritrabha-majumdar-706a7a215/"},
+    {instagram = "https://instagram.com/paul_pseudoman" },
+    {spotify = "https://open.spotify.com/user/31ws43q7vgyacltmmickqvoeodi4?si=_n7tG0rAQp2BtqC94ZNmjw&nd=1&dlsi=0ab860202f744b44" },
+  ]
