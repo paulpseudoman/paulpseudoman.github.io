@@ -1,7 +1,7 @@
 ---
 title: Curriculum Vitae
 ---
-You can download it [here](https://paulpseudoman.github.io/MY_CV.pdf)
+You can download it [here](./MY_CV.pdf)
 
 ### Education
 > **2023 - Present:** Indian Statistical Institute, Bangalore
