@@ -1,15 +1,47 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>paul_pseudoman &lt;span class=&#39;cursor&#39;&gt;&lt;/span&gt;</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content on paul_pseudoman &lt;span class=&#39;cursor&#39;&gt;&lt;/span&gt;</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Aritrabha Majumdar</title>
+    <link>https://paulpseudoman.github.io/</link>
+    <description>Recent content on Aritrabha Majumdar</description>
+    <generator>Hugo</generator>
     <language>en</language>
-    <managingEditor>aritrabhamajumdar.math@gmail.com (Aritrabha Majumdar)</managingEditor>
-    <webMaster>aritrabhamajumdar.math@gmail.com (Aritrabha Majumdar)</webMaster>
-    <copyright>&amp;copy; 2025 Aritrabha Majumdar. All Rights Reserved.</copyright>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Thu, 30 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://paulpseudoman.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Apple Bread Challenges</title>
+      <link>https://paulpseudoman.github.io/posts/apple-bread-challenges/</link>
+      <pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://paulpseudoman.github.io/posts/apple-bread-challenges/</guid>
+      <description>During the second semester, we had a course &amp;ldquo;Introduction to Statistics and Computation with data&amp;rdquo;. Our instructor Prof. Siva Athreya gave us a series of challenging questions to solve, each within a week. Although Most of it involved only coding, we had fun solving them (together!!)&#xA;Challenge 1: Link to heading Problem: A random walk on $\mathbb{Z}^2$, can be thought of as a position of particle, at time $n$, denoted by $S_n$ which is defined inductively below.</description>
+    </item>
+    <item>
+      <title>About</title>
+      <link>https://paulpseudoman.github.io/about/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>https://paulpseudoman.github.io/about/</guid>
+      <description>Hi all, Aritrabha Here!!👋👋 Link to heading I’m currently a second year undergraduate student in Mathematics at Indian Statistical Institute, Bangalore. My interests are in Probability Theory, Stochastic Process, Statistical Inference. You can find my short Curriculum Vitae here&#xA;Education Link to heading 2023 - Present: Indian Statistical Institute, Bangalore&#xA;Successfully completed first year of studies.&#xA;2021 - 2023: Ramakrishna Mission Vivekananda Vidyamandir, Malda&#xA;Passed WBCHSE with 97%.&#xA;2015-2021: Ramakrishna Mission Vivekananda Vidyamandir, Malda</description>
+    </item>
+    <item>
+      <title>Activities</title>
+      <link>https://paulpseudoman.github.io/activities/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>https://paulpseudoman.github.io/activities/</guid>
+      <description>Fall 2024: Link to heading I presented a talk in Math Club, ISI Banaglore, titled Trapped or Free: Understanding Random Walk Dynamics. The video can be found here, and the notes are available here.&#xA;I was one of the mentors of Undergraduate Directed Group Reading Project organised by Math Club, ISI Bangalore. The title of the project was Introduction to Dynamical Systems. The notes can be found here.&#xA;I completed an online course of Advanced Theory in Statistics under Professor Xin Zhao.</description>
+    </item>
+    <item>
+      <title>Projects</title>
+      <link>https://paulpseudoman.github.io/projects/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>https://paulpseudoman.github.io/projects/</guid>
+      <description>Fall 2024: Link to heading I have completed a reading project under Professor Supriyo Bhar on Discrete and Continuous Time Martingale.</description>
+    </item>
+    <item>
+      <title>Contact</title>
+      <link>https://paulpseudoman.github.io/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://paulpseudoman.github.io/contact/</guid>
+      <description>If you have any quires, feel free to mail me at&#xA;aritrabhamajumdar.math@gmail.com bmat2311@isibang.ac.in If you want, you can follow me on Instagram.&#xA;Here is a glimpse of my taste in music.</description>
+    </item>
   </channel>
 </rss>
