@@ -1,0 +1,278 @@
+
+  <meta charset="utf-8" />
+  {{ with .Site.Language.Params.htmlCode | default .Site.LanguageCode }}
+  <meta http-equiv="content-language" content="{{ . }}" />
+  {{ end }}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  {{/* Title */}}
+  {{ if .IsHome -}}
+  <title>Aritrabha Majumdar</title>
+  <meta name="title" content="Aritrabha Majumdar" />
+  {{- else -}}
+  <title>Aritrabha Majumdar</title>
+  <meta name="title" content="Aritrabha Majumdar" />
+  {{- end }}
+  {{/* Metadata */}}
+  {{ with (.Params.Summary | default .Params.Description) | default .Site.Params.description -}}
+  <meta name="description" content="{{ . }}" />
+  {{- end }}
+  {{ with  .Params.Tags | default .Site.Params.keywords -}}
+  <meta name="keywords" content="{{ range . }}{{ . }}, {{ end -}}" />
+  {{- end }}
+  {{ with .Site.Params.robots }}
+  <meta name="robots" content="{{ . }}" />
+  {{ end }}
+  {{ with .Params.robots }}
+  <meta name="robots" content="{{ . }}" />
+  {{ end }}
+  <link rel="canonical" href="{{ .Permalink }}" />
+  {{ range .AlternativeOutputFormats -}}
+  {{ printf `
+  <link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink ($.Site.Title | emojify) |
+  safeHTML }}
+  {{ end -}}
+  {{/* Asset bundles */}}
+  {{ $assets := newScratch }}
+  {{ $cssScheme := resources.Get (printf "css/schemes/%s.css" (.Site.Params.colorScheme | default "blowfish")) }}
+  {{ if not $cssScheme }}
+  {{ $cssScheme = resources.Get "css/schemes/blowfish.css" }}
+  {{ end }}
+  {{ $assets.Add "css" (slice $cssScheme) }}
+  {{ $cssMain := resources.Get "css/compiled/main.css" }}
+  {{ $assets.Add "css" (slice $cssMain) }}
+  {{ $cssCustom := resources.Get "css/custom.css" }}
+  {{ if $cssCustom }}
+  {{ $assets.Add "css" (slice $cssCustom) }}
+  {{ end }}
+  {{ $bundleCSS := $assets.Get "css" | resources.Concat "css/main.bundle.css" | resources.Minify | resources.Fingerprint
+  "sha512" }}
+  <link type="text/css" rel="stylesheet" href="{{ $bundleCSS.RelPermalink }}"
+    integrity="{{ $bundleCSS.Data.Integrity }}" />
+  {{ $jsAppearance := resources.Get "js/appearance.js" }}
+  {{ $jsAppearance = $jsAppearance | resources.ExecuteAsTemplate "js/appearance.js" . | resources.Minify | resources.Fingerprint "sha512" }}
+  <script type="text/javascript" src="{{ $jsAppearance.RelPermalink }}"
+    integrity="{{ $jsAppearance.Data.Integrity }}"></script>
+  {{ if .Site.Params.enableSearch | default false }}
+  {{ $jsFuse := resources.Get "lib/fuse/fuse.min.js" }}
+  {{ $jsSearch := resources.Get "js/search.js" }}
+  {{ $assets.Add "js" (slice $jsFuse $jsSearch) }}
+  {{ end }}
+  {{ if .Site.Params.enableCodeCopy | default false }}
+  {{ $jsCode := resources.Get "js/code.js" }}
+  {{ $assets.Add "js" (slice $jsCode) }}
+  {{ end }}
+  {{ if .Site.Params.rtl | default false }}
+  {{ $jsRTL := resources.Get "js/rtl.js" }}
+  {{ $assets.Add "js" (slice $jsRTL) }}
+  {{ end }}
+  {{ $jsMobileMenu := resources.Get "js/mobilemenu.js" }}
+  {{ $assets.Add "js" (slice $jsMobileMenu) }}
+  {{ if $assets.Get "js" }}
+  {{ $bundleJS := $assets.Get "js" | resources.Concat "js/main.bundle.js" | resources.Minify | resources.Fingerprint
+  "sha512" }}
+  <script defer type="text/javascript" id="script-bundle" src="{{ $bundleJS.RelPermalink }}"
+    integrity="{{ $bundleJS.Data.Integrity }}" data-copy="{{ i18n "code.copy" }}" data-copied="{{ i18n "code.copied"
+    }}"></script>
+  {{ end }}
+  {{ if not .Site.Params.disableImageZoom | default true }}
+  {{ $zoomJS := resources.Get "lib/zoom/zoom.min.js" | resources.Fingerprint "sha512" }}
+  <script src="{{ $zoomJS.RelPermalink }}" integrity="{{ $zoomJS.Data.Integrity }}"></script>
+  {{ end }}
+  {{/* Icons */}}
+  {{ if templates.Exists "partials/favicons.html" }}
+  {{ partialCached "favicons.html" .Site }}
+  {{ else }}
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}" />
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | relURL }}" />
+  <link rel="manifest" href="{{ "site.webmanifest" | relURL }}" />
+  {{ end }}
+  {{/* Site Verification */}}
+  {{ with .Site.Params.verification.google }}
+  <meta name="google-site-verification" content="{{ . }}" />
+  {{ end }}
+  {{ with .Site.Params.verification.bing }}
+  <meta name="msvalidate.01" content="{{ . }}" />
+  {{ end }}
+  {{ with .Site.Params.verification.pinterest }}
+  <meta name="p:domain_verify" content="{{ . }}" />
+  {{ end }}
+  {{ with .Site.Params.verification.yandex }}
+  <meta name="yandex-verification" content="{{ . }}" />
+  {{ end }}
+  {{ with .Site.Params.verification.fediverse }}
+  <meta name="fediverse:creator" content="{{ . }}" />
+  {{ end }}
+  {{/* Social */}}
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
+  {{/* Schema */}}
+  {{ partial "schema.html" . }}
+  {{/* Me */}}
+  {{ with .Site.Params.Author.name }}
+  <meta name="author" content="{{ . }}" />{{ end }}
+  {{ with .Site.Params.Author.links }}
+  {{ range $links := . }}
+  {{ range $name, $url := $links }}
+  {{ if not (strings.HasPrefix $url "mailto:") }}
+  <link href="{{ $url }}" rel="me" />{{ end }}
+  {{ end }}
+  {{ end }}
+  {{ end }}
+  {{/* Vendor */}}
+  {{ partial "vendor.html" . }}
+  {{/* Analytics */}}
+  {{ partial "analytics/main.html" .Site }}
+  {{/* Extend head - eg. for custom analytics scripts, etc. */}}
+  {{ if templates.Exists "partials/extend-head.html" }}
+  {{ partialCached "extend-head.html" .Site }}
+  {{ end }}
+  <meta name="theme-color"/>
+  {{/* Firebase */}}
+  {{ with $.Site.Params.firebase }}
+  {{ if isset $.Site.Params "firebase" }}
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script>
+
+    const firebaseConfig = {
+      apiKey: {{ $.Site.Params.firebase.apiKey }},
+      authDomain: {{ $.Site.Params.firebase.apiKey }},
+      projectId: {{ $.Site.Params.firebase.projectId }},
+      storageBucket: {{ $.Site.Params.firebase.storageBucket }},
+      messagingSenderId: {{ $.Site.Params.firebase.messagingSenderId }},
+      appId: {{ $.Site.Params.firebase.appId }},
+      measurementId: {{ $.Site.Params.firebase.measurementId }}
+    };
+
+    var app = firebase.initializeApp(firebaseConfig);
+    var db = firebase.firestore();
+    var auth = firebase.auth();
+
+  </script>
+  {{ end }}
+  {{ end }}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Create canvas element
+      const canvas = document.createElement('canvas');
+      canvas.style.position = 'fixed';
+      canvas.style.top = '0';
+      canvas.style.left = '0';
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
+      canvas.style.zIndex = '-1';
+      canvas.style.opacity = '0.5'; // Very subtle background
+      canvas.style.pointerEvents = 'none'; // Allow clicks through canvas
+      document.body.appendChild(canvas);
+
+      // Set canvas dimensions
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      // Brownian motion parameters
+      const numPaths = 50;
+      const maxSteps = 10000;
+      const paths = [];
+      const colors = [
+        'rgba(100, 181, 246, 0.7)',  // light blue
+        'rgba(77, 182, 172, 0.7)',   // teal
+        'rgba(129, 199, 132, 0.7)',  // green
+        'rgba(255, 183, 77, 0.7)',   // amber
+        'rgba(229, 115, 115, 0.7)'   // red
+      ];
+
+      // Path class
+      class BrownianPath {
+        constructor() {
+          this.reset();
+          this.steps = [];
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+          this.lineWidth = Math.random() * 0.5+ 1.5;
+        }
+
+        reset() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.steps = [{x: this.x, y: this.y}];
+          this.speedX = Math.random() * 2 - 1;
+          this.speedY = Math.random() * 2 - 1;
+        }
+
+        update() {
+  // Standard Brownian motion - normally distributed random steps
+  const scale = 2; // Controls the volatility
+  this.x += scale * (Math.random() - 0.5) * 2;
+  this.y += scale * (Math.random() - 0.5) * 2;
+
+  // Store current position
+  this.steps.push({x: this.x, y: this.y});
+
+  // Remove oldest step if we have too many
+  if (this.steps.length > maxSteps) {
+    this.steps.shift();
+  }
+
+  // Reset if path goes off screen
+  if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+    this.reset();
+  }
+}
+
+        draw(ctx) {
+          if (this.steps.length < 2) return;
+
+          ctx.beginPath();
+          ctx.moveTo(this.steps[0].x, this.steps[0].y);
+
+          for (let i = 1; i < this.steps.length; i++) {
+            ctx.lineTo(this.steps[i].x, this.steps[i].y);
+          }
+
+          ctx.strokeStyle = this.color;
+          ctx.lineWidth = this.lineWidth;
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          ctx.stroke();
+
+          // Draw current position dot
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.lineWidth * 1.5, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.fill();
+        }
+      }
+
+      // Initialize paths
+      for (let i = 0; i < numPaths; i++) {
+        paths.push(new BrownianPath());
+      }
+
+      // Animation loop
+      const ctx = canvas.getContext('2d');
+      function animate() {
+        // Clear with semi-transparent background for fading effect
+        ctx.fillStyle = 'rgba(0, 0, 0, 1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Update and draw all paths
+        paths.forEach(path => {
+          path.update();
+          path.draw(ctx);
+        });
+
+        requestAnimationFrame(animate);
+      }
+
+      // Start animation
+      animate();
+    });
+    </script>
+    
+</head>
