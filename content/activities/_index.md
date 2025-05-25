@@ -3,6 +3,10 @@ title: Activities
 ---
 
 ### Summer 2025
+- I gave an introductory talk in ***LIMIT Mathematics Camp*** organized by **Indian Statistical Institute, Bangalore**
+
+- I was invited to give a presentation in ***Xponential Round Gamma Achievers Seminar*** by **Chennai Mathematical Institute**.
+
 - I was the event manager of **CHAOS 2k25**, the annual fest of **ISI Bangalore**. Moreover I was also part of the group who created and maintained the [Official Website of CHAOS 2k25](https://chaosisib.github.io).
 
 - I was one of the  ***Mathematics Research Intern*** at **Research Commons**. The certificate of completion can be found [here](https://github.com/paulpseudoman/paulpseudoman.github.io/raw/main/completion.pdf).
