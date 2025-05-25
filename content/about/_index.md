@@ -2,7 +2,7 @@
 title: About Me
 ---
 {{< typeit lifelike=true >}} Hi,👋👋 <strong> Aritrabha </strong> here !! {{< /typeit >}}
-{{< delayed "3.465s" >}}
+{{< delayed "3.475s" >}}
 <p>
 I am a {{< age year="2005" month="6" day="6" >}} year old boy from a town named "Malda" from West Bengal, India. I am currently a third year undergraduate student in Mathematics at Indian Statistical Institute, Bangalore. My interests are in Probability Theory, Stochastic Process, Statistical Inference.
 </p>
