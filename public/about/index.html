@@ -638,10 +638,39 @@
       }).go();
     });
 </script>
-<div style="opacity:0;animation:fadeIn 0.5s ease-in 3.45s forwards;">
+<div style="opacity:0;animation:fadeIn 0.5s ease-in 3.465s forwards;">
     
 <p>
-I am a twenty year old boy from a town named "Malda" from West Bengal, India. I am currently a third year undergraduate student in Mathematics at Indian Statistical Institute, Bangalore. My interests are in Probability Theory, Stochastic Process, Statistical Inference.
+I am a <span class="dynamic-age"
+      data-birthyear="2005"
+      data-birthmonth="6"
+      data-birthday="6">
+  Calculating age...
+</span>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const elements = document.querySelectorAll('.dynamic-age');
+    elements.forEach(el => {
+      const birthDate = new Date(
+        el.dataset.birthyear,
+        el.dataset.birthmonth - 1, 
+        el.dataset.birthday
+      );
+      const today = new Date();
+
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const monthDiff = today.getMonth() - birthDate.getMonth();
+
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+
+      el.textContent = age;
+    });
+  });
+</script>
+ year old boy from a town named "Malda" from West Bengal, India. I am currently a third year undergraduate student in Mathematics at Indian Statistical Institute, Bangalore. My interests are in Probability Theory, Stochastic Process, Statistical Inference.
 </p>
 <p>
 Apart from academics, I am great foodie! I love to eat, and love to cook as well. I am also fan of <strong>Bengali Rock Music</strong>, but I am quite inclined to other genre as well. I also like to play <strong>First Person Shooter</strong> games, <strong>carrom</strong>, <strong>antichess</strong>, <strong>badminton</strong>, and <strong>cards</strong>. I am really fond of <strong>cardistry</strong>, and I also like to play <strong>literature</strong>, <strong>poker</strong>, <strong>auction bridge</strong>, <strong>contract bridge</strong> and <strong>call break</strong>.

@@ -1,0 +1,29 @@
+<span class="dynamic-age"
+      data-birthyear="{{ .Get "year" }}"
+      data-birthmonth="{{ .Get "month" }}"
+      data-birthday="{{ .Get "day" }}">
+  Calculating age...
+</span>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const elements = document.querySelectorAll('.dynamic-age');
+    elements.forEach(el => {
+      const birthDate = new Date(
+        el.dataset.birthyear,
+        el.dataset.birthmonth - 1, // Months are 0-indexed in JS
+        el.dataset.birthday
+      );
+      const today = new Date();
+
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const monthDiff = today.getMonth() - birthDate.getMonth();
+
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+
+      el.textContent = age;
+    });
+  });
+</script>
