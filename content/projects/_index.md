@@ -1,6 +1,9 @@
 ---
 title: Projects
 ---
+### Fall 2025
+-  I am currently doing a reading project under the guidance of Professor **Rishideep Roy** on ***Fractal Percolation and Stochastic Geometry***.
+
 ### Summer 2025
 - I have been selected as one of the research interns at **IISER Kolkata**. I am doing my research internship under **Dr. Amit Ghoshal**. The topic I am working on is [***Modelling Water Transport Channel in Aquifers using Bond Percolation***](https://github.com/paulpseudoman/paulpseudoman.github.io/raw/main/SAWSLE.pdf).
 

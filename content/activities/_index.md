@@ -1,7 +1,9 @@
 ---
 title: Activities
 ---
-
+### Fall 2025
+-  I was one of the mentors of **Undergraduate Group Reading Project: Winter 2025**, organized by **Math club of ISI
+Bangalore**. The title of the Project was ***“Exploring Random Walks”***.
 ### Summer 2025
 - I gave an introductory talk in ***LIMIT Mathematics Camp*** organized by **Indian Statistical Institute, Bangalore**
 
@@ -16,7 +18,7 @@ title: Activities
 - I mentored students for the upcoming **ISI Entrance Examination** at **Ramakrishna Mission Vivekananda Vidyamandir, Malda** during my winter vacation.
 - I presented a talk in **Math Club, ISI Banaglore**, titled [***Trapped or Free: Understanding Random Walk Dynamics***](https://mathclubisib.github.io/activities/expository_talks/student_talks/talks_2024/#ep2416-trapped-or-free---understanding-random-walk-dynamics). The video can be found [here](https://youtu.be/9-B8msNFuk8?si=5DYUu1ydiKI9c2ES), and the notes are available [here](https://github.com/paulpseudoman/paulpseudoman.github.io/raw/main/RWTalk.pdf).
 
-- I was one of the mentors of **Undergraduate Directed Group Reading Project** organised by **Math Club, ISI Bangalore**. The title of the project was [***Introduction to Dynamical Systems***](https://mathclubisib.github.io/activities/udgrp/winter_2024/#dynamical-systems). The notes can be found [here](https://github.com/paulpseudoman/paulpseudoman.github.io/raw/main/DSnotes.pdf).
+- I was one of the mentors of **Undergraduate Directed Group Reading Project : Winter 2024** organised by **Math Club, ISI Bangalore**. The title of the project was [***Introduction to Dynamical Systems***](https://mathclubisib.github.io/activities/udgrp/winter_2024/#dynamical-systems). The notes can be found [here](https://github.com/paulpseudoman/paulpseudoman.github.io/raw/main/DSnotes.pdf).
 
 - I completed an online course of ***Advanced Theory in Statistics*** under **Professor Xin Zhao**. This course is organised by **Beijing Institute of Mathematical Sciences and Application**.
 
