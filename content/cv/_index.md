@@ -27,6 +27,8 @@ You can download it [here](https://github.com/paulpseudoman/paulpseudoman.github
 > **2022:** Qualified National Science
 Examination for Chemistry.
 
+> Received *Jagadish Bose National Science Talent Search Scholarship*.
+
 > **2020:** Qualified *IOQM 2020*.
 
 
@@ -34,4 +36,3 @@ Examination for Chemistry.
 - **Languages:** I have strong reading, writing and speaking competencies for *English*, *Bengali*. Besides, I know *Hindi*, *Sanskrit*, and *German*.
 - **Coding:** C, Python, R, LaTeX , OCTAVE/MATLAB
 - **Other Activities:** I am a member of the Cultural Committee at **ISI Bangalore**. The goal of this committee to organize various cultural event across the year. Besides, I am a member of ***Math Club*** of **ISI Bangalore**. I was also the **Event Organizer** of **CHAOS 2025**, annual fest of **ISI Bangalore**.
-
