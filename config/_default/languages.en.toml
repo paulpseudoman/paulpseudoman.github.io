@@ -12,19 +12,21 @@ title = "paul_pseudoman <span class='cursor'></span>"
  #logo = "logo.jpg"
    secondaryLogo = "logo.png"
    description = "My Personal Website"
-   copyright = "&copy; 2025 Aritrabha Majumdar. All Rights Reserved."
+   copyright = "&copy; 2025 Aritrabha Majumdar. প্রতি কুঞ্জে কুঞ্জে কৃষ্ণ, বড়ো কুহকিনী সেই বাঁশি..."
 
  [params.author]
    name = "Aritrabha Majumdar"
    email = "aritrabhamajumdar.math@gmail.com"
-    image = "pic.jpg"
-    imageQuality = 96
-  headline = "Undergraduate Student at Indian Statistical Institute, Bangalore"
-  # bio = "Undergraduate Student at Indian Statistical Institute, Bangalore"
+    image = "pic.png"
+    imageQuality = 100
+  headline = "Postgraduate Student at Indian Statistical Institute, Kolkata"
+   bio = "gsbdksa"
    links = [
      {email = "mailto:aritrabhamajumdar.math@gmail.com"},
     {github = "https://github.com/paulpseudoman" },
     {linkedin = "https://www.linkedin.com/in/aritrabha-majumdar-706a7a215/"},
     {instagram = "https://instagram.com/paul_pseudoman" },
     {spotify = "https://open.spotify.com/user/31ws43q7vgyacltmmickqvoeodi4?si=_n7tG0rAQp2BtqC94ZNmjw&nd=1&dlsi=0ab860202f744b44" },
+    {Google_Scholar_logo = "https://scholar.google.com/citations?user=z8wLdh8AAAAJ&hl=en" },
+    {orcid = "https://orcid.org/0009-0003-9149-0729"},
   ]

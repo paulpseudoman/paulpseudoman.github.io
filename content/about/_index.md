@@ -4,7 +4,7 @@ title: About Me
 {{< typeit lifelike=true >}} Hi,👋👋 <strong> Aritrabha </strong> here !! {{< /typeit >}}
 {{< delayed "3.475s" >}}
 <p>
-I am a {{< age year="2005" month="6" day="6" >}} year old boy from a town named "Malda" from West Bengal, India. I am currently a third year undergraduate student in Mathematics at Indian Statistical Institute, Bangalore. My interests are in Probability Theory, Stochastic Process, Statistical Inference.
+I am a {{< age year="2005" month="6" day="6" >}} year old boy from a town named "Malda" from West Bengal, India. I am currently a first year postgraduate student in Mathematics at Indian Statistical Institute, Kolkata. My interests are in Probability Theory, Stochastic Process, Statistical Inference.
 </p>
 <p>
 Apart from academics, I am great foodie! I love to eat, and like to cook as well. I am also fan of <strong>Bengali Rock Music</strong>, but I am quite inclined to other genre as well. I also like to play <strong>First Person Shooter</strong> games, <strong>carrom</strong>, <strong>antichess</strong>, <strong>badminton</strong>, and <strong>cards</strong>. I am really fond of <strong>cardistry</strong>, and I also like to play <strong>literature</strong>, <strong>poker</strong>, <strong>auction bridge</strong>, <strong>contract bridge</strong> and <strong>call break</strong>.

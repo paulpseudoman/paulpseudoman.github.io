@@ -1,11 +1,11 @@
 ---
 title: Curriculum Vitae
 ---
-You can download it [here](https://github.com/paulpseudoman/paulpseudoman.github.io/raw/main/MY_CV.pdf)
+You can view the detailed curriculum vitae [here](https://paulpseudoman.github.io/MY_CV.pdf).
 
 ### Education
-> **2023 - Present:** Indian Statistical Institute, Bangalore
->> Successfully completed fifth semester of studies.
+> **2023 - 2026:** Indian Statistical Institute, Bangalore
+>> Successfully completed B.Math(Hons.) with first division and distinction.
 
 > **2021 - 2023:** Ramakrishna Mission Vivekananda Vidyamandir, Malda
 >> Passed WBCHSE with 97%.
@@ -35,4 +35,4 @@ Examination for Chemistry.
 ### Skills
 - **Languages:** I have strong reading, writing and speaking competencies for *English*, *Bengali*. Besides, I know *Hindi*, *Sanskrit*, and *German*.
 - **Coding:** C, Python, R, LaTeX , OCTAVE/MATLAB
-- **Other Activities:** I am a member of the Cultural Committee at **ISI Bangalore**. The goal of this committee to organize various cultural event across the year. Besides, I am a member of ***Math Club*** of **ISI Bangalore**. I was also the **Event Organizer** of **CHAOS 2025**, annual fest of **ISI Bangalore**.
+- **Other Activities:** I am a member of the Cultural Committee at **ISI Bangalore**. The goal of this committee to organize various cultural event across the year. Besides, I am a member of ***Math Club*** of **ISI Bangalore**. I was also the **Event Organizer** of **CHAOS 2k25** and **CHAOS 2k26**, annual fest of **ISI Bangalore**.
