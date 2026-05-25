@@ -4,6 +4,8 @@ title: Activities
 ### Summer 2026
 - I was one of the counselors of the **LIMIT Offline Camp**. I also conducted an exploratory session, where I discussed about ***CLT***, ***Erdős–Kac Theorem*** and ***Information Theory***. The full notes can be found [here](https://paulpseudoman.github.io/LIMIT.pdf).
 
+- I have completed a course on ***Creative Coding: Making Visuals with JavaScript*** by *Bruno Imbrizi* (A Domestika Course).
+
 - I was the event manager of **CHAOS 2k26**, the annual fest of **ISI Bangalore**. Moreover I was also part of the group who created and maintained the ***Official Website of CHAOS 2k26***.
 ### Fall 2025
 -  I was one of the mentors of **Undergraduate Group Reading Project: Winter 2025**, organized by **Math club of ISI
