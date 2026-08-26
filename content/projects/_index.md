@@ -7,7 +7,7 @@ title: Projects
 ### Fall 2025
 -  I am currently doing a reading project under the guidance of Professor **Rishideep Roy** on ***Fractal Percolation and Stochastic Geometry***.
 
--  I have worked in a project titled ***3 Player Auction Bridge - Statistical Algorithmic Strategies***. This is a joint work with  **Sourish Sarkar (ISI Bangalore)**, and **Dr. Moutushi Chatterjee (ISI Bangalore)**
+-  I have worked in a project titled [***3 Player Auction Bridge - Statistical Algorithmic Strategies***](https://arxiv.org/abs/2608.03217v1). This is a joint work with  **Sourish Sarkar (ISI Bangalore)**, and **Dr. Moutushi Chatterjee (ISI Bangalore)**
 
 ### Summer 2025
 - I was selected as one of the research interns at **IISER Kolkata**. I am doing my research internship under **Dr. Amit Ghoshal**. The topic I was working on is [***Modelling Water Transport Channel in Aquifers using Bond Percolation***](https://paulpseudoman.github.io/SAWSLE.pdf).
