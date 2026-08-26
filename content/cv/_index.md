@@ -1,7 +1,7 @@
 ---
 title: Curriculum Vitae
 ---
-You can view the detailed curriculum vitae [here](https://paulpseudoman.github.io/MY_CV.pdf).
+You can view the detailed curriculum vitae [here](https://paulpseudoman.github.io/MY_CV.pdf?v=2026-08-27).
 
 ### Education
 > **2023 - 2026:** Indian Statistical Institute, Bangalore
